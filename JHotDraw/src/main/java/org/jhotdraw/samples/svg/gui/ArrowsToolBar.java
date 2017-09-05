@@ -24,9 +24,9 @@ public class ArrowsToolBar extends AbstractToolBar{
     /**
      * Creates new instance.
      */
-    public StrokeToolBar() {
+    public ArrowsToolBar() {
         ResourceBundleUtil labels = ResourceBundleUtil.getBundle("org.jhotdraw.samples.svg.Labels");
-        setName(labels.getString("stroke.toolbar"));
+        setName(labels.getString("arrows.toolbar"));
         setDisclosureStateCount(3);
     }
 
@@ -44,7 +44,7 @@ public class ArrowsToolBar extends AbstractToolBar{
     }
 
     @Override
-    @FeatureEntryPoint(JHotDrawFeatures.STROKE_PALETTE)
+    @FeatureEntryPoint(JHotDrawFeatures.ARROW_PALETTE)
     protected JComponent createDisclosedComponent(int state) {
         JPanel p = null;
 
@@ -60,79 +60,20 @@ public class ArrowsToolBar extends AbstractToolBar{
                 GridBagConstraints gbc;
                 AbstractButton btn;
 
-                // Stroke color
+
+                // Arrow type
                 Map<AttributeKey, Object> defaultAttributes = new HashMap<AttributeKey, Object>();
-                STROKE_GRADIENT.set(defaultAttributes, null);
-                btn = ButtonFactory.createSelectionColorButton(editor,
-                        STROKE_COLOR, ButtonFactory.HSV_COLORS, ButtonFactory.HSV_COLORS_COLUMN_COUNT,
-                        "attribute.strokeColor", labels, defaultAttributes, new Rectangle(3, 3, 10, 10));
+                ARROW_HEADS.set(defaultAttributes, null);
+                btn = ButtonFactory.createArrowTypeButton(editor, labels);
                 btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
                 ((JPopupButton) btn).setAction(null, null);
                 gbc = new GridBagConstraints();
                 gbc.gridx = 0;
                 gbc.anchor = GridBagConstraints.FIRST_LINE_START;
                 p.add(btn, gbc);
+                System.out.println("hello");
 
-                // Opacity slider
-                JPopupButton opacityPopupButton = new JPopupButton();
-                JAttributeSlider opacitySlider = new JAttributeSlider(JSlider.VERTICAL, 0, 100, 100);
-                opacityPopupButton.add(opacitySlider);
-                labels.configureToolBarButton(opacityPopupButton, "attribute.strokeOpacity");
-                opacityPopupButton.setUI((PaletteButtonUI) PaletteButtonUI.createUI(opacityPopupButton));
-                opacityPopupButton.setIcon(
-                        new SelectionOpacityIcon(editor, STROKE_OPACITY, null, STROKE_COLOR, getClass().getResource(labels.getString("attribute.strokeOpacity.icon")),
-                                new Rectangle(5, 5, 6, 6), new Rectangle(4, 4, 7, 7)));
-                opacityPopupButton.setPopupAnchor(SOUTH_EAST);
-                new SelectionComponentRepainter(editor, opacityPopupButton);
-                gbc = new GridBagConstraints();
-                gbc.gridx = 0;
-                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-                gbc.insets = new Insets(3, 0, 0, 0);
-                p.add(opacityPopupButton, gbc);
-                opacitySlider.setUI((SliderUI) PaletteSliderUI.createUI(opacitySlider));
-                opacitySlider.setScaleFactor(100d);
-                new FigureAttributeEditorHandler<Double>(STROKE_OPACITY, opacitySlider, editor);
 
-                // Create stroke width popup slider
-                JPopupButton strokeWidthPopupButton = new JPopupButton();
-                JAttributeSlider strokeWidthSlider = new JAttributeSlider(
-                        JSlider.VERTICAL, 0, 50, 1);
-                strokeWidthSlider.setUI((SliderUI) PaletteSliderUI.createUI(strokeWidthSlider));
-                strokeWidthPopupButton.add(strokeWidthSlider);
-                labels.configureToolBarButton(strokeWidthPopupButton, "attribute.strokeWidth");
-                strokeWidthPopupButton.setUI((PaletteButtonUI) PaletteButtonUI.createUI(strokeWidthPopupButton));
-                gbc = new GridBagConstraints();
-                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-                gbc.gridx = 0;
-                gbc.insets = new Insets(3, 0, 0, 0);
-                p.add(strokeWidthPopupButton, gbc);
-                new FigureAttributeEditorHandler<Double>(STROKE_WIDTH, strokeWidthSlider, editor);
-
-                // Create stroke dashes buttons
-                btn = ButtonFactory.createStrokeJoinButton(editor, labels);
-                btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
-                gbc = new GridBagConstraints();
-                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-                gbc.gridy = 0;
-                gbc.insets = new Insets(0, 3, 0, 0);
-                p.add(btn, gbc);
-
-                btn = ButtonFactory.createStrokeCapButton(editor, labels);
-                btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
-                gbc = new GridBagConstraints();
-                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-                gbc.gridy = 1;
-                gbc.insets = new Insets(3, 3, 0, 0);
-                p.add(btn, gbc);
-
-                btn = ButtonFactory.createStrokeDashesButton(editor, labels);
-                btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
-                gbc = new GridBagConstraints();
-                gbc.gridwidth = GridBagConstraints.REMAINDER;
-                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-                gbc.gridy = 2;
-                gbc.insets = new Insets(3, 3, 0, 0);
-                p.add(btn, gbc);
             }
             break;
 
@@ -294,7 +235,7 @@ public class ArrowsToolBar extends AbstractToolBar{
 
     @Override
     protected String getID() {
-        return "stroke";
+        return "arrows";
     }
 
     @Override

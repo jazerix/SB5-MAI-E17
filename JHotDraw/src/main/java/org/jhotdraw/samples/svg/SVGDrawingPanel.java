@@ -165,6 +165,7 @@ public class SVGDrawingPanel extends JPanel {
         if (newValue != null) {
             newValue.add(view);
         }
+        arrowsToolBar.setEditor(editor);
         creationToolBar.setEditor(editor);
         fillToolBar.setEditor(editor);
         strokeToolBar.setEditor(editor);
@@ -191,6 +192,7 @@ public class SVGDrawingPanel extends JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        arrowsToolBar = new org.jhotdraw.samples.svg.gui.ArrowsToolBar();
         toolButtonGroup = new javax.swing.ButtonGroup();
         scrollPane = new javax.swing.JScrollPane();
         view = new org.jhotdraw.draw.DefaultDrawingView();
@@ -241,6 +243,7 @@ public class SVGDrawingPanel extends JPanel {
         toolsPane.add(linkToolBar);
         toolsPane.add(canvasToolBar);
         toolsPane.add(viewToolBar);
+        toolsPane.add(arrowsToolBar);
 
         toolsScrollPane.setViewportView(toolsPane);
 
@@ -257,6 +260,7 @@ public class SVGDrawingPanel extends JPanel {
         return this;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jhotdraw.samples.svg.gui.ArrowsToolBar arrowsToolBar;
     private org.jhotdraw.samples.svg.gui.ActionsToolBar actionToolBar;
     private org.jhotdraw.samples.svg.gui.AlignToolBar alignToolBar;
     private org.jhotdraw.samples.svg.gui.ArrangeToolBar arrangeToolBar;

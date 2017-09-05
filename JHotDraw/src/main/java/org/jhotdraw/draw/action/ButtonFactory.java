@@ -1467,6 +1467,47 @@ public class ButtonFactory {
                 ResourceBundleUtil.getBundle("org.jhotdraw.draw.Labels"));
     }
 
+
+
+
+    public static JPopupButton createArrowTypeButton(DrawingEditor editor,
+                                                      ResourceBundleUtil labels) {
+
+        JPopupButton popupButton = new JPopupButton();
+        labels.configureToolBarButton(popupButton, "attribute.arrowHeads");
+        popupButton.setFocusable(false);
+        HashMap<AttributeKey, Object> attr;
+
+        attr = new HashMap<AttributeKey, Object>();
+        attr.put(ARROW_HEADS, ArrowHeads.BOTH);
+        popupButton.add(
+                new AttributeAction(
+                        editor,
+                        attr,
+                        labels.getString("attribute.arrowHeads.both"),
+                        null));
+
+        attr = new HashMap<AttributeKey, Object>();
+        attr.put(ARROW_HEADS, ArrowHeads.START);
+        popupButton.add(
+                new AttributeAction(
+                        editor,
+                        attr,
+                        labels.getString("attribute.arrowHeads.start"),
+                        null));
+
+        attr = new HashMap<AttributeKey, Object>();
+        attr.put(ARROW_HEADS, ArrowHeads.END);
+        popupButton.add(
+                new AttributeAction(
+                        editor,
+                        attr,
+                        labels.getString("attribute.arrowHeads.end"),
+                        null));
+        return popupButton;
+    }
+
+
     public static JPopupButton createStrokeJoinButton(DrawingEditor editor,
             ResourceBundleUtil labels) {
 

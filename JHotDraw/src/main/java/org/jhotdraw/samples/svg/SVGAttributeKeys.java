@@ -71,6 +71,9 @@ public class SVGAttributeKeys extends AttributeKeys {
     public enum TextAlign {
         START, CENTER, END
     }
+
+
+
     /**
      * Specifies the text alignment of a SVGText figure.
      */
@@ -101,7 +104,8 @@ public class SVGAttributeKeys extends AttributeKeys {
      * This is a value between 0 and 1 whereas 0 is translucent and 1 is fully opaque.
      */
     public final static AttributeKey<Double> STROKE_OPACITY = new AttributeKey<Double>("strokeOpacity",Double.class, 1d, false, labels);
-    
+
+
     /**
      * Specifies a link.
      * In an SVG file, the link is stored in a "a" element which encloses the

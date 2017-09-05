@@ -171,6 +171,19 @@ public class AttributeKeys {
      */
     public final static AttributeKey<Boolean> IS_STROKE_DASH_FACTOR = new AttributeKey<Boolean>("isStrokeDashFactor", Boolean.class, true, false, labels);
 
+    /**
+     * Specifies the type of arrow (single ended, double ended, and which end)
+     */
+    public final static AttributeKey<ArrowHeads> ARROW_HEADS = new AttributeKey<ArrowHeads>("arrowHeads", ArrowHeads.class, null, true, labels);
+
+
+    /**
+     * Enumerates different kinds of arrows (one end, other end, doubleended, or no ends)
+     */
+    public enum ArrowHeads{
+        START, END, BOTH
+    }
+
     public static enum StrokeType {
 
         /**
