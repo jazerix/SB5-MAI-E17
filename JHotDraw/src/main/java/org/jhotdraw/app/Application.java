@@ -157,6 +157,8 @@ public interface Application {
      *
      * This is a bound property.
      */
+
+
     public void setEnabled(boolean newValue);
     /**
      * Adds a property change listener.

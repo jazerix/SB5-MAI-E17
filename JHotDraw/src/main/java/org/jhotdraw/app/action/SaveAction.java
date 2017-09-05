@@ -90,7 +90,7 @@ public class SaveAction extends AbstractViewAction {
         }
     }
     
-    protected void saveToFile(final View view, final File file) {
+    protected void saveToFile(final View    view, final File file) {
         view.execute(new Worker() {
             public Object construct() {
                 try {
