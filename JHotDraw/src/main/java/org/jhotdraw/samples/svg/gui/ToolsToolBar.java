@@ -137,7 +137,20 @@ public class ToolsToolBar extends AbstractToolBar {
         gbc.insets = new Insets(3, 0, 0, 0);
         p.add(btn, gbc);
 
-        textAreaTool = new TextAreaCreationTool(new SVGTextAreaFigure(), attributes);
+       attributes = new HashMap<AttributeKey, Object>();
+       attributes.put(AttributeKeys.FILL_COLOR, Color.black);
+       attributes.put(AttributeKeys.STROKE_COLOR, null);
+       btn = ButtonFactory.addToolTo(this, editor, textTool = new TextCreationTool(new SVGFontAwesomeFigure(), attributes), "createText", labels);
+       textTool.setToolDoneAfterCreation(true);
+       btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+       gbc = new GridBagConstraints();
+       gbc.gridx = 0;
+       gbc.gridy = 3;
+       gbc.insets = new Insets(3, 0, 0, 0);
+       p.add(btn, gbc);
+
+
+                   textAreaTool = new TextAreaCreationTool(new SVGTextAreaFigure(), attributes);
         textAreaTool.setRubberbandColor(Color.BLACK);
         textAreaTool.setToolDoneAfterCreation(true);
         btn = ButtonFactory.addToolTo(this, editor, textAreaTool, "createTextArea", labels);
