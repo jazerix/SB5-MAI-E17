@@ -35,4 +35,16 @@ public class JHotDrawFeatures {
     public static final String LINK_PALETTE = "link palette";
     public static final String VIEW_PALETTE = "view palette";
     public static final String ALIGN_PALETTE = "align palette";
+    public static final String FontAwesomeToolBar = "FontAwesomeToolBar";
+    public static final String FontAwesomeMeta = "FontAwesomeMeta";
+    public static final String DisplayToogle = "DisplayToogle";
+    public static final String ToolPanel = "ToolPanel";
+    public static final String ButtonsPopUp = "ButtonsPopUp";
+    public static final String AttributedTextField = "AttributedTextField";
+    public static final String AttributedSlider = "AttributedSlider";
+    public static final String HandleCreator = "HandleCreator";
+    public static final String FONT_AWESOME_BUTTON = "Buttons";
+    public static final String FONT_AWESOME_BUTTON_FA = "add fontAwesome Button";
+    public static final String FONT_AWESOME_DESIGN = "DesignConstraint";
+    
 }

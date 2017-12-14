@@ -112,7 +112,7 @@ public class SVGApplicationModel extends DefaultApplicationModel {
     }
 
     protected JMenu createViewMenu(Application a, View p) {
-        JMenu m, m2;
+        JMenu m;
         JMenuItem mi;
         JRadioButtonMenuItem rbmi;
         JCheckBoxMenuItem cbmi;

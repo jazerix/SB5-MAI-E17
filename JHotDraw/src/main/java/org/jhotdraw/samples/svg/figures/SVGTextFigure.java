@@ -63,7 +63,7 @@ public class SVGTextFigure
         this("Text");
     }
 
-    @FeatureEntryPoint(JHotDrawFeatures.TEXT_TOOL)
+    @FeatureEntryPoint("SVGTextFigure - Create")
     public SVGTextFigure(String text) {
         setText(text);
         SVGAttributeKeys.setDefaults(this);
@@ -71,7 +71,9 @@ public class SVGTextFigure
     
     // DRAWING
     protected void drawText(java.awt.Graphics2D g) {
+        
     }
+    
     protected void drawFill(Graphics2D g) {
         g.fill(getTextShape());
     }
@@ -271,6 +273,7 @@ public class SVGTextFigure
     public void setText(String newText) {
         TEXT.set(this, newText);
     }
+    
     public boolean isEditable() {
         return editable;
     }
@@ -284,7 +287,7 @@ public class SVGTextFigure
     }
     
     public Font getFont() {
-        return SVGAttributeKeys.getFont(this);
+        return SVGAttributeKeys.getFont(this);  
     }
     
     public Color getTextColor() {

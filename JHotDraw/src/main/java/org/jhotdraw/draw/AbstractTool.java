@@ -14,6 +14,7 @@
 
 package org.jhotdraw.draw;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import javax.swing.*;
 import org.jhotdraw.app.action.*;
 import org.jhotdraw.beans.AbstractBean;
@@ -67,6 +68,7 @@ public abstract class AbstractTool extends AbstractBean implements Tool {
     
     
     /** Creates a new instance. */
+    @FeatureEntryPoint("AbstractTool - Create")
     public AbstractTool() {
         editorProxy = new DrawingEditorProxy();
         setInputMap(createInputMap());

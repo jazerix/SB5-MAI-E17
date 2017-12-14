@@ -15,6 +15,10 @@
 package org.jhotdraw.samples.svg;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.util.ResourceBundleUtil;
 
@@ -117,7 +121,6 @@ public class SVGAttributeKeys extends AttributeKeys {
      */
     public final static AttributeKey<String> LINK_TARGET = new AttributeKey<String>("linkTarget", String.class,null, true, labels);
     
-    
     /**
      * Gets the fill paint for the specified figure based on the attributes
      * FILL_GRADIENT, FILL_OPACITY, FILL_PAINT and the bounds of the figure.
@@ -195,5 +198,19 @@ public class SVGAttributeKeys extends AttributeKeys {
             grow = getPerpendicularDrawGrowth(f) + strokeWidth / 2d;
         }
         return grow;
+    }
+    
+    public Font getIconFont(Figure f) {
+        Font font;
+        try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("/fontawesome-webfont.ttf")) {
+            font = Font.createFont(Font.TRUETYPE_FONT, is);
+            font = font.deriveFont(Font.PLAIN, 10);
+        } catch (IOException ex) {   
+            throw new UnsupportedOperationException("getIconFont IOEx");
+        } catch (FontFormatException ex) {
+            throw new UnsupportedOperationException("getIconFont FontEx");
+        }
+        
+        return font.deriveFont(FONT_SIZE.get(f).floatValue()); 
     }
 }

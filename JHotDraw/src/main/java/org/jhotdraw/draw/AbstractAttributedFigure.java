@@ -14,6 +14,7 @@
 
 package org.jhotdraw.draw;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import java.awt.*;
 import java.awt.geom.*;
 import java.util.*;
@@ -50,6 +51,7 @@ public abstract class AbstractAttributedFigure extends AbstractFigure {
     private HashSet<AttributeKey> forbiddenAttributes;
     
     /** Creates a new instance. */
+    @FeatureEntryPoint("AbstractAttributedFigure - Create")
     public AbstractAttributedFigure() {
     }
     

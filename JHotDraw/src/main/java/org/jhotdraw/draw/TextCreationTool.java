@@ -15,6 +15,7 @@
 
 package org.jhotdraw.draw;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Point2D;
@@ -51,6 +52,7 @@ public class TextCreationTool extends CreationTool implements ActionListener {
         super(prototype);
     }
     /** Creates a new instance. */
+    @FeatureEntryPoint("TextCreationTool - Create")
     public TextCreationTool(TextHolderFigure prototype, Map<AttributeKey,Object> attributes) {
         super(prototype, attributes);
     }

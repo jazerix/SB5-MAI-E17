@@ -13,6 +13,7 @@
  */
 package org.jhotdraw.samples.svg.gui;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import javax.swing.border.*;
 import org.jhotdraw.gui.plaf.palette.*;
 import org.jhotdraw.samples.svg.*;
@@ -20,11 +21,14 @@ import org.jhotdraw.util.*;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
+import org.jhotdraw.app.JHotDrawFeatures;
 import org.jhotdraw.app.action.*;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.action.*;
 import org.jhotdraw.samples.svg.action.*;
 import org.jhotdraw.samples.svg.figures.*;
+import org.jhotdraw.samples.svg.tools.FontAwesomeCreationTool;
+
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 
 /**
@@ -43,6 +47,7 @@ public class ToolsToolBar extends AbstractToolBar {
     }
 
     @Override
+    @FeatureEntryPoint("ToolsToolBar - Create")
     protected JComponent createDisclosedComponent(int state) {
         JPanel p = null;
 
@@ -124,7 +129,29 @@ public class ToolsToolBar extends AbstractToolBar {
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 3, 0, 0);
         p.add(btn, gbc);
-
+        
+        // #CHANGED
+        // Added new icon the difference between this button and the others are the implementation of
+        // FontAwesomeCreationTool which is an extension of CreationTool, the only reason for this is 
+        // usage of 'instanceof' when looking for this tool.
+        
+        // The figure SVGFontAwesome is more or less just an SVGTextFigure with a few modifications.
+        // The label 'createIcon' have been added in the Labels.properties, so the correct icon picture and label can be found.
+       
+        attributes = new HashMap<AttributeKey, Object>();
+        attributes.put(AttributeKeys.FILL_COLOR, Color.black);
+        attributes.put(AttributeKeys.STROKE_COLOR, null);
+        btn = ButtonFactory.addToolTo(this, editor, creationTool = new FontAwesomeCreationTool(new SVGFontAwesome(), attributes), "createIcon", labels);
+        creationTool.setToolDoneAfterCreation(true);
+        btn.setUI((PaletteButtonUI) PaletteButtonUI.createUI(btn));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.insets = new Insets(3, 0, 0, 0);
+        p.add(btn, gbc);
+        
+        // --------------------------- //
+        
         attributes = new HashMap<AttributeKey, Object>();
         attributes.put(AttributeKeys.FILL_COLOR, Color.black);
         attributes.put(AttributeKeys.STROKE_COLOR, null);

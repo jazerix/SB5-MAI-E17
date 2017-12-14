@@ -14,6 +14,7 @@
 
 package org.jhotdraw.samples.svg;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.app.*;
 import org.jhotdraw.util.ResourceBundleUtil;
 /**
@@ -25,6 +26,7 @@ import org.jhotdraw.util.ResourceBundleUtil;
 public class Main {
     
     /** Creates a new instance. */
+    @FeatureEntryPoint("ENTRY")
     public static void main(String[] args) {
         // Debug resource bundle
         ResourceBundleUtil.setVerbose(true);

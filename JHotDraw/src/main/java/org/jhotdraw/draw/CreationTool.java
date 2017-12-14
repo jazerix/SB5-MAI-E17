@@ -13,6 +13,7 @@
  */
 package org.jhotdraw.draw;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import javax.swing.undo.*;
 import java.awt.*;
 import java.awt.geom.*;
@@ -98,6 +99,7 @@ public class CreationTool extends AbstractTool {
         this(prototypeClassName, null, null);
     }
 
+    @FeatureEntryPoint("CreationTool - Create")
     public CreationTool(String prototypeClassName, Map<AttributeKey, Object> attributes) {
         this(prototypeClassName, attributes, null);
     }

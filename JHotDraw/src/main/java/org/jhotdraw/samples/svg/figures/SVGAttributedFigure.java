@@ -14,6 +14,7 @@
 
 package org.jhotdraw.samples.svg.figures;
 
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
@@ -37,6 +38,7 @@ import org.jhotdraw.xml.*;
 public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
     
     /** Creates a new instance. */
+    @FeatureEntryPoint("SVGFigure - Create")
     public SVGAttributedFigure() {
     }
     
@@ -113,16 +115,7 @@ public abstract class SVGAttributedFigure extends AbstractAttributedFigure {
         LinkedList<Action> actions = new LinkedList<Action>();
         if (TRANSFORM.get(this) != null) {
             ResourceBundleUtil labels = ResourceBundleUtil.getBundle("org.jhotdraw.samples.svg.Labels");
-            actions.add(new AbstractAction(labels.getString("edit.removeTransform.text")) {
-                public void actionPerformed(ActionEvent evt) {
-                    ResourceBundleUtil labels = ResourceBundleUtil.getBundle("org.jhotdraw.samples.svg.Labels");
-                    SVGAttributedFigure.this.willChange();
-                    fireUndoableEditHappened(
-                            TRANSFORM.setUndoable(SVGAttributedFigure.this, null)
-                            );
-                    SVGAttributedFigure.this.changed();
-                }
-            });
+            
         }
         return actions;
     }

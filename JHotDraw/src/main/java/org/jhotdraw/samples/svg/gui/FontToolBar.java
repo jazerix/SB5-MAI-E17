@@ -29,9 +29,11 @@ import org.jhotdraw.gui.JAttributeTextField;
 import org.jhotdraw.gui.JFontChooser;
 import org.jhotdraw.gui.JPopupButton;
 import org.jhotdraw.gui.plaf.palette.*;
+import org.jhotdraw.samples.svg.tools.FontAwesomeCreationTool;
 import org.jhotdraw.text.FontFormatter;
 import org.jhotdraw.text.JavaNumberFormatter;
 import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
+import org.jhotdraw.samples.svg.figures.*;
 
 /**
  * StrokeToolBar.
@@ -65,10 +67,17 @@ public class FontToolBar extends AbstractToolBar {
         if (newValue != null) {
             displayer = new SelectionComponentDisplayer(editor, this) {
 
+                // #CHANGED
+                
+                // Since the FontAwesome figure is an instance of TextHolderFigure we had to add 
+                // additional logic here to avoid the original 'FONT' toolbar to show when the SVGFontAwesome was in the selection           
+                
                 @Override
                 public void updateVisibility() {
                     boolean newValue = editor != null &&
                             editor.getActiveView() != null &&
+                            // #CHANGED (THE FOLLOWING LINE)
+                            !(editor.getTool() instanceof FontAwesomeCreationTool) &&
                             (isVisibleIfCreationTool && ((editor.getTool() instanceof TextCreationTool) || editor.getTool() instanceof TextAreaCreationTool) ||
                             containsTextHolderFigure(editor.getActiveView().getSelectedFigures()));
                     component.setVisible(newValue);
@@ -85,6 +94,8 @@ public class FontToolBar extends AbstractToolBar {
 
                 private boolean containsTextHolderFigure(Collection<Figure> figures) {
                     for (Figure f : figures) {
+                        // #CHANGED (THE FOLLOWING LINE)
+                        if (f instanceof SVGFontAwesome) return false;
                         if (f instanceof TextHolderFigure) {
                             return true;
                         } else if (f instanceof CompositeFigure) {
