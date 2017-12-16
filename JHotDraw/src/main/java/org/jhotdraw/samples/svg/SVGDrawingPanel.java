@@ -15,6 +15,7 @@ package org.jhotdraw.samples.svg;
 
 import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import java.util.prefs.*;
+
 import org.jhotdraw.undo.*;
 import org.jhotdraw.util.*;
 
@@ -26,7 +27,6 @@ import org.jhotdraw.app.JHotDrawFeatures;
 import org.jhotdraw.gui.ToolBarLayout;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.gui.plaf.palette.PaletteLookAndFeel;
-import static org.jhotdraw.samples.svg.SVGAttributeKeys.*;
 
 /**
  * JSVGDrawingAppletPanel.
@@ -87,20 +87,6 @@ public class SVGDrawingPanel extends JPanel {
         view.setDrawing(drawing);
         drawing.addUndoableEditListener(undoManager);
 
-        /* FIXME - Implement the code for handling constraints!
-        toggleGridAction = actionToolBar.getToggleGridAction();
-        if (prefs != null && prefs.getBoolean("gridVisible", false)) {
-        view.setConstrainer(view.getOnConstrainer());
-        }
-        view.addPropertyChangeListener(new PropertyChangeListener() {
-        public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("constrainer") && prefs) {
-        prefs.putBoolean("gridVisible", evt.getNewValue() == toggleGridAction.getOnConstrainer());
-        }
-        }
-        });
-         */
-        
         // Sort the toolbars according to the user preferences
         ArrayList<JToolBar> sortme = new ArrayList<JToolBar>();
         for (Component c : toolsPane.getComponents()) {
@@ -136,6 +122,11 @@ public class SVGDrawingPanel extends JPanel {
             public void componentRemoved(ContainerEvent e) {
             }
         });
+    }
+
+    public JPanel getToolsPane()
+    {
+        return this.toolsPane;
     }
 
     public void setDrawing(Drawing d) {

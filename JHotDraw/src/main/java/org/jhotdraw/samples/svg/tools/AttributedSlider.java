@@ -15,10 +15,6 @@ import org.jhotdraw.gui.FigureAttributeEditorHandler;
 import org.jhotdraw.gui.JAttributeSlider;
 import org.jhotdraw.gui.plaf.palette.PaletteSliderUI;
 
-/**
- *
- * @author Tommy
- */
 public class AttributedSlider {
     
     @FeatureEntryPoint(JHotDrawFeatures.AttributedSlider)

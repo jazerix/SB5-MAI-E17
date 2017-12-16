@@ -15,10 +15,6 @@ import org.jhotdraw.samples.svg.figures.SVGFontAwesome;
 import org.jhotdraw.samples.svg.gui.AbstractToolBar;
 import org.jhotdraw.samples.svg.gui.SelectionComponentDisplayer;
 
-/**
- *
- * @author Tommy
- */
 public class DisplayToogle {
     
     @FeatureEntryPoint(JHotDrawFeatures.DisplayToogle)

@@ -365,6 +365,6 @@ public class SVGView extends AbstractView implements ExportableView {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jhotdraw.samples.svg.SVGDrawingPanel svgPanel;
+    public org.jhotdraw.samples.svg.SVGDrawingPanel svgPanel;
     // End of variables declaration//GEN-END:variables
 }
