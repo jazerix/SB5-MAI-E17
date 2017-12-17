@@ -16,10 +16,6 @@ import org.jhotdraw.gui.plaf.palette.PaletteFormattedTextFieldUI;
 import org.jhotdraw.text.JavaNumberFormatter;
 import org.jhotdraw.util.ResourceBundleUtil;
 
-/**
- *
- * @author Tommy
- */
 public class AttributedTextField {
     
     @FeatureEntryPoint(JHotDrawFeatures.AttributedTextField)
